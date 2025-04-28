@@ -1,0 +1,52 @@
+# apiVersion: apps/v1
+# kind: ReplicaSet
+# metadata: 
+#   name: hunter-rs
+#   namespace: default
+# spec: 
+#   replicas: 5
+#   selector:
+#     matchExpressions:   #####################################################3 With matchExpressions
+#     - key: ghanshyam
+#       operator: In
+#       values:
+#       - kala
+#   template: 
+#     metadata: 
+#       name: nginx-pod
+#       namespace: default 
+#       labels: 
+#         ghanshyam: kala
+#     spec:
+#       containers: 
+#       - image: nginx
+#         name: nginx-container
+#         ports: 
+#         - containerPort: 80
+
+################################################################################3
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: hunter-rs
+  namespace: default
+spec: 
+  replicas: 5
+  selector:
+    matchLabels:           ##############3##########################################3###3 With matchLabels
+      ghanshyam: kala
+  template: 
+    metadata: 
+      name: nginx-pod
+      namespace: default 
+      labels: 
+        ghanshyam: kala
+    spec:
+      containers: 
+      - image: nginx:stable-perl
+        name: nginx-container
+        ports: 
+        - containerPort: 80
+
+        
